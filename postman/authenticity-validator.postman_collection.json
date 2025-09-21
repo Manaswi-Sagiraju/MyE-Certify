@@ -1,0 +1,54 @@
+{
+  "info": {
+    "name": "Authenticity Validator API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {"method": "GET", "url": "http://localhost:8000/health"}
+    },
+    {
+      "name": "Admin Login",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8000/admin/login",
+        "header": [{"key": "Content-Type", "value": "application/x-www-form-urlencoded"}],
+        "body": {"mode": "urlencoded", "urlencoded": [
+          {"key": "username", "value": "admin"},
+          {"key": "password", "value": "admin123"},
+          {"key": "grant_type", "value": "password"}
+        ]}
+      }
+    },
+    {
+      "name": "Bulk Upload (CSV)",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8000/admin/bulk-upload",
+        "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+        "body": {"mode": "formdata", "formdata": [
+          {"key": "file", "type": "file", "src": ["data/demo_certificates.csv"]}
+        ]}
+      }
+    },
+    {
+      "name": "Verify Upload",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:8000/verify/upload",
+        "body": {"mode": "formdata", "formdata": [
+          {"key": "file", "type": "file", "src": []}
+        ]}
+      }
+    }
+  ],
+  "variable": [
+    {"key": "token", "value": ""}
+  ]
+}
+
+
+
+
+
